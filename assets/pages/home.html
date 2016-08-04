@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<div class="dash-cover">
+    <div class="dash-layout">
+    <div class="cap-bg"></div>
+    <div class="dash-cap">Discover in Lagos<br> 
+        <span class="dash-sm">#parties, #carnivals, #hangouts<br>
+    </div>
+    
+    <div class="dash-bt">
+        It's <span class="cur-time" my-current-time="format"></span> in Lagos, Nigeria<br> 
+        <span ng-show="weather" class="dash-sm"><i class="owf owf-{{weather.weather[0].id}}"></i> {{weather.main.temp}} &#176;C {{weather.weather[0].description}}</span>
+        <div><img class="ep-sm" src="assets/images/logo-sm.png" /></div>
+    </div>
+    </div>
+</div>
+
+
+<div id="map"></div>

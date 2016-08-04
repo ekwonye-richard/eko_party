@@ -1,0 +1,53 @@
+[
+    {
+        "name": "Browns Cafe & Restaurant",
+        "addr": "16B Akin Olugbade Street, Victoria Island",
+        "tel": "+234 1 270 26 06",
+        "url": "browns-cafe.com/",
+        "facebook": "https://www.facebook.com/Brownscafelagos?fref=ts",
+        "twitter": "https://twitter.com/brownscafelagos",
+        "cover": "assets/images/browns-cafe.jpg",
+        "geometry": {
+            "location": {
+                "lat": 6.430780299999999,
+                "lng": 3.4217054000000644
+            }
+        },
+        "menu": ["Breakfast Menu", "Entrees", "Starters", "Traditional Fare", "Sandwiches", "Desserts", "Coffee/Hot Chocolate", "Teas", "Bar Menu", "Extras"],
+        "types": ["cafe", "food", "point_of_interest", "establishment"],
+        "mon": "8AM to 11PM",
+        "tue": "8AM to 11PM",
+        "wed": "8AM to 11PM",
+        "thu": "8AM to 11PM",
+        "fri": "8AM to 11PM",
+        "sat": "8AM to 11PM",
+        "sun": "8AM to 11PM",
+        "info": "<p>Browns Café & Restaurant, fondly known as “Browns” to the cognoscenti, is a restaurant designed to meet all discerning tastes. With our contemporary interior and relaxed atmosphere, our food and drinks are thoughtfully prepared and hand crafted from scratch daily, by our incredible culinary team, using the highest quality, freshly sourced and organic ingredients.</p><p>We are passionate about serving food that we also love to eat and feel good about. Our menu combines a variety of culinary delights, Nigerian classics and dishes prepared with seasonal ingredients. We are determined to change what people think about food and to create appetising dishes that will never bore your taste buds.</p>"
+    },
+    {
+        "name": "Hard Rock Cafe Lagos",
+        "addr": "Plot No 3 & 4, Block XVI, Oniru Estate, Victoria Island, Near Landmark Centre",
+        "tel": "+2349081988888",
+        "url": "hardrock.com/cafes/lagos/",
+        "facebook": "https://www.facebook.com/HardRockCafeLagos",
+        "twitter": "https://twitter.com/hrclagos",
+        "instagram": "https://instagram.com/hrclagos",
+        "cover": "assets/images/hardrockcafe.jpg",
+        "geometry": {
+            "location": {
+                "lat": 6.4226218,
+                "lng": 3.444059599999946
+            }
+        },
+        "menu": ["Starters", "Salads", "Entrees", "Smokehouse", "Smokehouse Sandwiches", "Burgers", "Sandwiches", "Desserts", "Kids"],
+        "types": ["cafe", "restaurant", "food", "point_of_interest", "establishment"],
+        "mon": "12PM to 1:30AM",
+        "tue": "12PM to 1:30AM",
+        "wed": "12PM to 1:30AM",
+        "thu": "12PM to 1:30AM",
+        "fri": "12PM to 1:30AM",
+        "sat": "12PM to 1:30AM",
+        "sun": "12PM to 1:30AM",
+        "info": "<p>Enhance your evening when you take your dining and entertainment expectations to a whole new level at Hard Rock Cafe Lagos. Although the cuisine is out of this world, you can do more than grab a bite to eat here. Our state-of-the-art cafe features more than 200 seats, a stage for live performances, and a swimming pool area for adults and kids. Children can also enjoy the atmosphere in our special kids section. No matter where you sit, you can enjoy live music, cold drinks, and an unforgettable experience with the beautiful waters of the Atlantic Ocean as the perfect backdrop.</p><p><strong>RESTAURANT HOURS:</strong> 12PM - 12AM <strong>BAR HOURS:</strong> 12PM - 1:30AM <strong>ROCK SHOP® HOURS:</strong> 12PM - 11PM</p>"
+    }
+]

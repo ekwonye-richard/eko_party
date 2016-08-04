@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<div ng-controller="CinCtrl as ctrl">
+
+    <div class="temp-bg">
+
+        <div class="" ng-show="apiError">
+            <b>API Error : </b>
+            <span>{{ apiStatus}}</span>
+        </div>
+        <div id="wrapper">
+
+            <!-- Movies Slides -->
+
+            <div class="rslides_container">
+                <ul class="rslides" id="movslider">
+                    <li><img src="assets/images/posters/1.jpg" alt=""></li>
+                    <li><img src="assets/images/posters/2.jpg" alt=""></li>
+                    <li><img src="assets/images/posters/3.jpg" alt=""></li>
+                </ul>
+            </div>
+
+
+        </div>
+
+        <div class="t-box-m">
+            <div class="ui grid">
+
+
+                <div ng-repeat="cin in cinDist | orderBy:'distance.value'" class="eight wide column cin">
+
+                    <div class="ui padded grid">
+
+                        <div ng-show="cinemas[cin.index].name" class="thirteen wide column ek-bg lft">
+                            <div class="dt-data-sm">
+                                <div class="dt-title-sm" ng-click="cinemaData(cinemas[cin.index], cin)">{{cinemas[cin.index].name}}</div>
+
+                            </div>
+                        </div>
+                        <i class="ek-circ"></i>
+                        <div class="three wide column ek-bg center aligned">
+
+                        </div>
+
+                        <div class="thirteen wide column dt-bg f-row">
+                            <div class="dt-data-sm">
+                                <div class="dt-addr"> <i class="srch icon marker"></i> <p class="addr">{{cinemas[cin.index].formatted_address}}<p></div>
+                            </div>
+                        </div>
+
+                        <div class="three wide column dt-bg center aligned  f-row-i">
+                            <i class="flaticon-pop1"></i>
+                        </div>
+
+                        <div class="thirteen wide column dt-bg  l-row">
+                            <div class="dt-data-sm">
+                                <div class="dr-tb"><span><i class="flaticon-road29"></i> {{(geoLoc = 0 || !cin.distance.text ) ?'N/A' : cin.distance.text}}</span> <span><i class="icon car"></i> {{(geoLoc = 0 || !cin.duration.text ) ?'N/A' : cin.duration.text}}</span>
+                                    <span ng-show="cinemas[cin.index].rating" class="rt-bg">{{cinemas[cin.index].rating | number:1}}</span><i ng-show="cinemas[cin.index].rating" class="icon star half empty"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <i class="ek-circ bt"></i>
+                        
+                        <div class="three wide column dt-bg center aligned   l-row-i">
+                            <i class="flaticon-refreshment"></i>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+            
+            <div class="g-logo"><img src="assets/images/powered-by-google/desktop/powered_by_google_on_non_white.png"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+            // You can also use "$(window).load(function() {"
+            $(function () {
+
+            // Slideshow 1
+            $("#movslider").responsiveSlides({
+            auto: true,
+                    pager: true,
+                    nav: true,
+                    speed: 500,
+                    namespace: "centered-btns"
+            });
+            });
+</script>

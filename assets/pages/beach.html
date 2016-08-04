@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<div ng-controller="BchCtrl as ctrl">
+
+    <div class="temp-bg bch">
+
+        <div class="" ng-show="apiError">
+            <b>API Error : </b>
+            <span>{{ apiStatus}}</span>
+        </div>
+        <div id="wrapper">
+
+            <img class="menu-bg" src="assets/images/beach.jpg" alt=""/>
+
+            <div class="logo-btm">
+                <img class="ep-sm" src="assets/images/logo-sm.png" />
+            </div>
+        </div>
+
+        <div class="t-box-m">
+            <div class="ui grid">
+
+                <div ng-repeat="bch in bchDist | orderBy:'distance.value'" class="eight wide column">
+
+                    <div class="ui padded grid">
+
+                        <div class="three wide column ek-bg lft center aligned">
+                            <div class="ek-logo"> <i class="flaticon-island"></i> </div>
+                        </div>
+
+                        <div ng-show="beaches[bch.index].name" class="thirteen wide column ek-bg rgt">
+                            <div class="dt-data-sm">
+                                <div class="dt-title-sm" ng-click="beachData(beaches[bch.index], bch)">{{beaches[bch.index].name}}</div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="thirteen wide column dt-bg f-row">
+                            <div class="dt-data-sm">
+                                <div class="dt-addr"> <i class="srch icon marker"></i> <p class="addr">{{beaches[bch.index].formatted_address}}<p></div>
+                            </div>
+                        </div>
+
+                        <div class="three wide column dt-bg center aligned  f-row-i">
+                            
+                        </div>
+
+                        <div class="thirteen wide column dt-bg  l-row">
+                            <div class="dt-data-sm">
+                                <div class="dr-tb"><span><i class="flaticon-road29"></i>  {{(geoLoc = 0 || !bch.distance.text ) ?'N/A' : bch.distance.text}}</span> <span><i class="icon car"></i> {{(geoLoc = 0 || !bch.duration.text ) ?'N/A' : bch.duration.text}}</span>
+                                    <span ng-show="beaches[bch.index].rating" class="rt-bg">{{beaches[bch.index].rating | number:1}}</span><i ng-show="beaches[bch.index].rating" class="icon star half empty"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="three wide column dt-bg center aligned   l-row-i">
+                            <i class="flaticon-holidays3"></i>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            <div class="g-logo"><img src="assets/images/powered-by-google/desktop/powered_by_google_on_non_white.png"></div>
+            
+        </div>
+
+    </div>
+
+</div>
+
+
+<div id="map"></div>

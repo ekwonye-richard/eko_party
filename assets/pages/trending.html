@@ -1,0 +1,45 @@
+
+<div class="temp-bg">
+    
+     <div id="wrapper">
+
+            <img class="menu-bg" src="assets/images/trending2.jpg" alt=""/>
+
+            <div class="logo-btm">
+                <img class="ep-sm" src="assets/images/logo-sm.png" />
+            </div>
+        </div>
+    
+    <div  ng-repeat="trend in trends | filter: upcomingEvents | orderBy: '-heat'" class="t-box">
+
+        <div class="ui equal width padded grid">
+            <div class="row">
+                <div class="column black">
+                    <img ng-src="{{trend.cover}}">
+                </div>
+
+                <div class="column dt-bg">
+                    <div class="dt-data">
+                        <div class="dt-title">{{trend.title}} <span class="dt-date">{{trend.date_day}} <br><span class="dt-mnth">  {{trend.date_month}}</span></span></div>
+                        <div class="dt-venue"> <i class="icon marker"></i> {{trend.venue}}</div>
+                        <div class="dt-town"> {{trend.town}}</div>
+                        <div class="dt-time" ng-show="trend.time"> <i class="flaticon-clock97 dt-icon"></i>{{trend.time}} {{trend.period}}</div>
+                        <div class="dt-type">
+                            <span ng-show="trend.type == 'Private'"> <i class="icon lock"></i> Private </span>
+                            <span ng-show="trend.fee == '1'"><i class="flaticon-park2 dt-icon"></i> Tickets<br></span>
+                            <span ng-show="trend.fee == '0'"><i class="flaticon-smiley12 dt-icon"></i> Free<br></span>
+                            <div class="dt-amt" ng-show="trend.fee == 1" ></div>
+                        </div>
+                        <div class="dt-ln"></div>
+                        <div class="dt-info">
+                            <p class="dt-txt">{{trend.info}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="map"></div>

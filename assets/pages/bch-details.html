@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<div ng-controller="SpecCtrlBch">
+
+    <div class="temp-bg">
+
+        <div class="sg-plc">
+
+            <div class="t-box-max" ng-show="bch">
+
+                <div class="c-map">
+                    <div id="c-map"></div>
+                </div>
+
+                <div class="ui equal width padded grid">
+                    <div class="row">
+
+                        <div class="column dt-bg">
+                            <div ng-show="bch.name" class="dt-data">
+                                <div class="plc">
+                                    <div class="dt-title">{{bch.name}}</div>
+                                    <div class="dt-schadd"> <i class="srch icon marker"></i> <p class="addr">{{bch.formatted_address}}<p></div>
+                                    <div class="dt-wth">
+                                        <span><i class="flaticon-road29"></i> {{(geoLoc = 0 || !mat.distance.text ) ?'N/A' : mat.distance.text}}</span> <span><i class="icon car"></i> {{(geoLoc = 0 || !mat.duration.text ) ?'N/A' : mat.duration.text}}</span>
+                                    </div>
+                                    <div class="dt-rating"><span ng-show="bch.rating"> <i class="icon star half empty"></i>{{bch.rating| number:1}}</span></div>
+                                    <div class="dt-ln"></div>
+                                    <div class="dt-type"> <i class="icon map"></i> <span class="dt-lst" ng-repeat="type in bch.types"> {{type| undScr}} </span></div>
+                                    <div class="dt-ln"></div>
+                                     <div class="grp-ico"><i class="flaticon-island"></i></div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="return">
+        <div class="return-box"></div>
+        
+            <div class="return-lnk"  ng-click="back()">
+                <i class="icon reply"></i>
+            </div>
+        
+    </div>

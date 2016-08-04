@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<div ng-controller="CafeCtrl as ctrl">
+
+    <div class="temp-bg">
+
+        <div class="" ng-show="apiError">
+            <b>API Error : </b>
+            <span>{{ apiStatus}}</span>
+        </div>
+        <div id="wrapper">
+
+            <img class="menu-bg" src="assets/images/cafe.jpg" alt=""/>
+
+            <div class="logo-btm">
+                <img class="ep-sm" src="assets/images/logo-sm.png" />
+            </div>
+        </div>
+
+
+        <div class="t-box-m ft-plc">
+            <div class="ui grid">
+                <div ng-repeat="cafe in ftCafeDist | orderBy:'distance.value'" class="eight wide column">
+                    <div class="cl-img">
+                        <div class="ui grey ft-ribbon ribbon label">
+                            <i class="certificate icon"></i> Featured
+                        </div>
+                        <img ng-src="{{ftCafes[cafe.index].cover}}">
+                    </div>
+
+                    <div class="ui padded grid">
+
+                        <div class="eleven wide column dt-bg">
+                            <div ng-show="ftCafes[cafe.index].name" class="dt-data-sm">
+                                <div class="dt-title-sm" ng-click="ftCafe(ftCafes[cafe.index], cafe)">{{ftCafes[cafe.index].name}}</div>
+                                <div class="dt-addr"> <i class="srch icon marker"></i> <p class="addr">{{ftCafes[cafe.index].addr}}<p></div>
+                            </div>
+                            <div class="dr-tb"><span><i class="flaticon-road29"></i> {{(geoLoc = 0 || !cafe.distance.text ) ?'N/A' : cafe.distance.text}}</span> <span><i class="icon car"></i> {{(geoLoc = 0 || !cafe.duration.text ) ?'N/A' : cafe.duration.text}}</span></div>
+
+                        </div>
+                        <div class="five wide column dt-bg center aligned">
+                            <div class="ic-lft">
+                                <span class="smd"><a href="tel: {{ftCafes[cafe.index].tel}}"><i class="icon pnk phone"></i></a></span> 
+                                <span class="smd"><a href="http://{{ftCafes[cafe.index].url}}" target="_blank"><i class="icon globe"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="eight wide column">
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="t-box-m  cafe">
+            <div class="ui grid">
+
+                <div ng-repeat="cafe in cafeDist| orderBy:'distance.value'" class="eight wide column">
+
+                    <div class="ui padded grid">
+
+                        <div class="three wide column ek-bg lft center aligned">
+                            <div class="ek-logo"> <i class="flaticon-coffeeshop29"></i> </div>
+                        </div>
+
+                        <div ng-show="cafes[cafe.index].name" class="thirteen wide column ek-bg rgt">
+                            <div class="dt-data-sm">
+                                <div class="dt-title-sm" ng-click="cafeData(cafes[cafe.index], cafe)">{{cafes[cafe.index].name}}</div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="thirteen wide column dt-bg f-row">
+                            <div class="dt-data-sm">
+                                <div class="dt-addr"> <i class="srch icon marker"></i> <p class="addr">{{cafes[cafe.index].formatted_address}}<p></div>
+                            </div>
+                        </div>
+
+                        <div class="three wide column dt-bg center aligned  f-row-i">
+
+                        </div>
+
+                        <div class="thirteen wide column dt-bg  l-row">
+                            <div class="dt-data-sm">
+                                <div class="dr-tb"><span><i class="flaticon-road29"></i>  {{(geoLoc = 0 || !cafe.distance.text ) ?'N/A' : cafe.distance.text}}</span> <span><i class="icon car"></i>  {{(geoLoc = 0 || !cafe.duration.text ) ?'N/A' : cafe.duration.text}}</span>
+                                    <span ng-show="cafes[cafe.index].rating" class="rt-bg">{{cafes[cafe.index].rating| number:1}}</span><i ng-show="cafes[cafe.index].rating" class="icon star half empty"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="three wide column dt-bg center aligned   l-row-i">
+                            <i class="flaticon-chairs9"></i>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            <div class="g-logo"><img src="assets/images/powered-by-google/desktop/powered_by_google_on_non_white.png"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div id="map"></div>

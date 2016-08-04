@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<div ng-controller="ClubCtrl as ctrl">
+
+    <div class="temp-bg">
+        <div class="" ng-show="apiError">
+            <b>API Error : </b>
+            <span>{{ apiStatus}}</span>
+        </div>
+        
+<div id="wrapper">
+
+            <img class="menu-bg" src="assets/images/club.jpg" alt=""/>
+
+            <div class="logo-btm">
+                <img class="ep-sm" src="assets/images/logo-sm.png" />
+            </div>
+        </div>
+        
+        <div class="t-box-m ft-club">
+            <div class="ui grid">
+                <div ng-repeat="club in ftClubs" class="eight wide column">
+
+                    <div class="ftd">
+                        <div class="ft-icon"><i class="icon certificate"></i></div>
+                        <div class="ft-note">FEATURED</div>
+                    </div>
+                    <div class="cl-img">
+                        <img ng-src="{{club.cover}}">
+                    </div>
+
+                    <div class="ui padded grid">
+
+                        <div class="eleven wide column dt-bg">
+                            <div ng-show="club.name" class="dt-data-sm">
+                                <div class="dt-title-sm" ng-click="ftClub(club)">{{club.name}}</div>
+                                <div class="dt-addr"> <i class="srch icon marker"></i> <p class="addr">{{club.addr}}<p></div>
+                            </div>
+                            <div class="dr-tb"><span><i class="flaticon-road29"></i> 30km</span> <span><i class="icon car"></i> 1hr 20min</span></div>
+
+                        </div>
+                        <div class="five wide column dt-bg center aligned">
+                            <div class="ic-lft">
+                                <span class="smd" data-content="Add users to your feed"><a href="tel: {{club.tel}}"><i class="icon pnk phone"></i></a></span> 
+                                <span class="smd"><a href="{{club.url}}" target="_blank"><i class="icon globe"></i></a></span>
+                                <span class="smd"><i ng-click="ftClub(club)" class="flaticon-situation"></i></span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="eight wide column">
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="t-box-m">
+            <div class="ui grid">
+                <div ng-repeat="club in clubDist | orderBy:'distance.value'" class="eight wide column">
+
+                    <div class="outer">
+                        <div class="inner">
+                            <i class="top left"></i>
+                            <i class="top right"></i>
+                            <div class="box">
+
+                                <div class="ui padded grid">
+
+                                    <div class="four wide column dt-ct">
+                                        <div class="dr-tb"><i class="srch flaticon-road29"></i> {{club.distance.text}}</div>
+                                        <div class="dr-tb"><i class="srch icon car"></i> {{club.duration.text}}</div>
+
+                                    </div>
+
+                                    <div class="eight wide column dt-bg">
+                                        <div ng-show="clubs[club.index].name" class="dt-data-sm">
+                                            <div class="dt-title-sm" ng-click="clubData(clubs[club.index], club)">{{clubs[club.index].name}}</div>
+                                            <div class="dt-addr"> <i class="srch icon marker"></i> <p class="addr">{{clubs[club.index].formatted_address}}<p></div>
+                                        </div>
+                                    </div>
+                                    <div class="four wide column dt-bg center aligned">
+                                        <div class="rt-bg">{{clubs[club.index].rating}}<span ng-hide="clubs[club.index].rating">N/A</span></div>
+                                        <div class="dt-rating"> <i class="icon star half empty"></i> Rating</div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <i class="bottom right"></i>
+                            <i class="bottom left"></i>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="eight wide column">
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div id="map"></div>
+
+<script type="text/javascript">
+
+</script>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="ekoApp">
+    <head>
+        <title>EKO PARTY</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed|Titillium+Web|Ubuntu|Droid+Sans|Lato|Roboto">
+        <link rel="stylesheet" type="text/css" href="assets/semantic-ui/semantic.min.css">
+        <link rel="stylesheet" type="text/css" href="assets/style/custom.css">
+        <link rel="stylesheet" type="text/css" href="assets/style/responsiveslides.css">
+        <link rel="stylesheet" type="text/css" href="assets/style/slides.css">
+        <link rel="stylesheet" type="text/css" href="assets/style/eko-party/flaticon.css">
+        <link rel="stylesheet" type="text/css" href="assets/style/owfont-master/css/owfont-regular.css">
+
+
+        <script src="assets/js/modernizr.js"></script>
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/semantic-ui/semantic.min.js"></script>
+        <script src="assets/js/angular.min.js"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZndUKNPXpZRfpEa9g3xpv9OWojBNxpng&libraries=places&signed_in=true"></script>
+        <script src="assets/js/angular-ui-router.min.js"></script>
+        <script src="assets/js/angular-sanitize.min.js"></script>
+        <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+        <script src="https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js"></script>
+        <script src="assets/js/responsiveslides.min.js"></script>
+        <script src="assets/js/moment.min.js"></script>
+        <script src="assets/js/moment-timezone.min.js"></script>
+        <script src="assets/js/moment-timezone-data.js"></script>
+
+        <script src="assets/js/main.js"></script>
+    </head>
+    <body ng-controller="MainCtrl as ctrl">
+        <div class="main">
+
+            <div class="fixed-bar">
+                <div class="top-area">
+                    <div class="top-bar">
+
+                        <div class="ui grid bar1">
+                            <div class="three column row">
+
+                                <div class="column">
+
+                                    <a ui-sref="home" class="title">EKO <span>PARTY</span></a>
+
+
+                                </div>
+
+                                <div class="center aligned column"></div>
+                                <div class="right aligned column">
+                                    <span class="top-icon fb">  <i class="flaticon-facebook51"></i> </span>
+                                    <span class="top-icon fb">  <i class="flaticon-twitter44"></i> </span>
+                                    <span class="top-icon fb">  <i class="flaticon-google115"></i> </span>
+
+                                    <div class="ui dropdown">
+
+                                        <span class="drp-menu"><i class="icon bars"></i></span>
+
+                                        <div class="menu">
+                                            <div class="item">
+                                                <i class="certificate icon"></i>
+                                                Get Featured
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="mob-fixed-bar">
+
+                <div class="top-right">
+                    <span class="mob-menu"><i class="icon ellipsis vertical"></i></span>
+                    <img class="mob-logo" src="assets/images/logo-sm.png">
+                </div>
+                <span class="mob-burger"><i class="icon bars"></i></span>
+                
+            </div>
+
+
+            <div class="cont-area">
+                <div class="loading">
+                    <div class="loaders">
+                        <div class="loading-bar"></div>
+                        <div class="loading-bar"></div>
+                        <div class="loading-bar"></div>
+                        <div class="loading-bar"></div>
+                    </div>
+
+                </div>
+                <div class="temp-view" id="temp" ui-view>
+
+                </div>
+            </div>
+
+            <div class="foot-bar">
+
+                <div class="ui equal width center aligned padded grid">
+                    <div class="row">
+                        <div ng-class="{'active-box': $state.is('trending')}" class="menu-box column black">
+                            <a ui-sref="trending">
+                                <div class="menu-icon"><span>#</span></div>
+                                <div class="menu-text-o">Trending</div>
+                            </a>
+                        </div>
+                        <div ng-class="{'active-box': $state.is('clubs') || $state.is('clb-details') || $state.is('ft-clb-details')}" class="black menu-box column">
+                            <a ui-sref="clubs">
+                                <div class="menu-icon"><i class="flaticon-grid7"></i></div>
+                                <div class="menu-text">Clubs</div>
+                            </a>
+                        </div>
+
+
+                        <div ng-class="{'active-box': $state.is('cafes') || $state.is('cafe-details') || $state.is('ft-cafe-details')}" class="black menu-box column">
+                            <a ui-sref="cafes">
+                                <div class="menu-icon"><i class="flaticon-coffeeshop29"></i></div>
+                                <div class="menu-text">Cafés</div>
+                            </a>
+                        </div>
+                        <div ng-class="{'active-box': $state.is('beach') || $state.is('bch-details')}" class="black menu-box column">
+                            <a ui-sref="beach">
+                                <div class="menu-icon"><i class="flaticon-island"></i></div>
+                                <div class="menu-text">Beaches</div>
+                            </a>
+                        </div>
+                        <div ng-class="{'active-box': $state.is('cinemas') || $state.is('cin-details')}" class="black menu-box column">
+                            <a ui-sref="cinemas">
+                                <div class="menu-icon"><i class="flaticon-popcorn6"></i></div>
+                                <div class="menu-text">Cinemas</div>
+                            </a>
+                        </div>
+                        <div ng-class="{'active-box': $state.is('search') || $state.is('sch-details')}" class="black menu-box column">
+                            <a class="search-tool">
+                                <div class="menu-icon"><i class="flaticon-mask7"></i></div>
+                                <div class="menu-text">Search</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="hmap"></div>
+
+        <!-- off Canvas -->
+
+        <div class="ui basic modal">
+            <i class="close icon"></i>
+            <div class="header">
+            </div>
+            <div class="content bg-sch">
+                <form name="searchForm" novalidate ng-submit="search()">
+                    <div class="ui search">
+                        <i class="search icon"></i>
+
+                        <div class="ui massive transparent inverted icon input">
+                            <input  ng-model="searchPlace" name="place" autocomplete="off" type="text" placeholder="Search Place, Event, Artist, D.J...">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="actions">
+
+            </div>
+        </div>
+
+
+        <div id="map"></div>
+
+
+        <script type="text/javascript">
+                            $('.ui.basic.modal')
+                            .modal('attach events', '.search-tool', 'show')
+                            ;
+                            $('.ui.dropdown')
+                            .dropdown()
+                            ;</script>
+    </body>
+</html>

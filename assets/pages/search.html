@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<div ng-controller="PlaceCtrl as ctrl">
+    <div id="#wrapper">
+        <div class="temp-bg">
+
+            <div class="ui equal width padded grid src-tab">
+                <div class="row tabular menu">
+
+                    <div class="column idl-bg item active tb" data-tab="places">
+                        <span class="tab-item lt">PLACE</span> 
+                    </div>
+
+                    <div class="column idl-bg item tb" data-tab="events">
+                        <span class="tab-item rt">TRENDING
+                            <a class="ui grey circular label counter">{{schTrend.length}}</a>  
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="src-cont">
+
+                <div ng-controller="ClubCtrl as ctrl" class="ui attached tab segment active" data-tab="places">
+
+                    
+              
+        <div class="t-box-m ft-plc">
+            <div class="ui grid">
+                <div ng-repeat="club in ftClubDist | orderBy:'distance.value' | filter: searchPlace" class="eight wide column">                    
+                    <div class="cl-img">
+                        <div class="ui grey ft-ribbon ribbon label">
+        <i class="certificate icon"></i> Featured
+      </div>
+                        <img ng-src="{{ftClubs[club.index].cover}}">
+                    </div>
+
+                    <div class="ui padded grid">
+
+                        <div class="eleven wide column dt-bg">
+                            <div ng-show="ftClubs[club.index].name" class="dt-data-sm">
+                                <div class="dt-title-sm" ng-click="ftClub(ftClubs[club.index], club)">{{ftClubs[club.index].name}}</div>
+                                <div class="dt-addr"> <i class="srch icon marker"></i> <p class="addr">{{ftClubs[club.index].addr}}<p></div>
+                            </div>
+                            <div class="dr-tb"><span><i class="flaticon-road29"></i> {{(geoLoc = 0 || !club.distance.text ) ?'N/A' : club.distance.text}}</span> <span><i class="icon car"></i> {{(geoLoc = 0 || !club.duration.text ) ?'N/A' : club.duration.text}}</span></div>
+
+                        </div>
+                        <div class="five wide column dt-bg center aligned">
+                            <div class="ic-lft">
+                                <span class="smd" data-content="Add users to your feed"><a href="tel: {{ftClubs[club.index].tel}}"><i class="icon pnk phone"></i></a></span> 
+                                <span class="smd"><a href="{{ftClub[club.index].url}}" target="_blank"><i class="icon globe"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="eight wide column">
+
+                </div>
+            </div>
+
+        </div>
+                    
+
+                    <div class="t-box-m sch">
+
+                        <div class="ui grid">
+
+                            <div ng-repeat="srch in srchDist| orderBy:'distance.value'" class="eight wide column">
+
+                                <div class="ui padded grid">
+
+
+                                    <div ng-show="srchRes[srch.index].name" class="sixteen wide column ek-bg rgt">
+                                        <div class="dt-data-sm">
+                                            <div class="dt-title-sm" ng-click="srchData(srchRes[srch.index], srch)">{{srchRes[srch.index].name}}</div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="thirteen wide column dt-bg f-row">
+                                        <div class="dt-data-sm">
+                                            <div class="dt-addr"> <i class="srch icon marker"></i> <p class="addr">{{srchRes[srch.index].formatted_address}}<p></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="three wide column dt-bg center aligned  f-row-i">
+
+                                    </div>
+
+                                    <div class="thirteen wide column dt-bg  l-row">
+                                        <div class="dt-data-sm">
+                                            <div class="dr-tb"><span><i class="flaticon-road29"></i>  {{(geoLoc = 0|| !srch.distance.text ) ?'N/A' : srch.distance.text}}</span> <span><i class="icon car"></i>  {{(geoLoc = 0|| !srch.duration.text ) ?'N/A' : srch.duration.text}}</span>
+                                                <span ng-show="srchRes[srch.index].rating" class="rt-bg">{{srchRes[srch.index].rating| number:1}}</span><i ng-show="srchRes[srch.index].rating" class="icon star half empty"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="three wide column dt-bg center aligned   l-row-i">
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="g-logo"><img src="assets/images/powered-by-google/desktop/powered_by_google_on_non_white.png"></div>
+
+                    </div>
+
+                    <div ng-show="apiError == 'UNKNOWN_ERROR'" class="t-box">
+                        <div class="dt-bg no-rst"><i class="flaticon-wound2 sch-icon"></i> Bad Internet Connection!</div>
+                    </div>
+
+                </div>
+                <div class="ui attached tab segment" data-tab="events">
+
+                    <div ng-repeat="trend in schTrend = (trends| filter: upcomingEvents | filter: searchPlace | orderBy: '-heat')" class="t-box">
+
+                        <div class="ui equal width padded grid">
+                            <div class="row">
+                                <div class="column black">
+                                    <img ng-src="{{trend.cover}}">
+                                </div>
+
+                                <div class="column dt-bg">
+                                    <div class="dt-data">
+                                        <div class="dt-title">{{trend.title}} <span class="dt-date">{{trend.date_day}} <br><span class="dt-mnth">  {{trend.date_month}}</span></span></div>
+                                        <div class="dt-venue"> <i class="icon marker"></i> {{trend.venue}}</div>
+                                        <div class="dt-town"> {{trend.town}}</div>
+                                        <div class="dt-time" ng-show="trend.time"> <i class="flaticon-clock97 dt-icon"></i>{{trend.time}} {{trend.period}}</div>
+                                        <div class="dt-type">
+                                            <span ng-show="trend.type == 'Private'"> <i class="icon lock"></i> Private </span>
+                                            <span ng-show="trend.fee == '1'"><i class="flaticon-park2 dt-icon"></i> Tickets<br></span>
+                                            <span ng-show="trend.fee == '0'"><i class="flaticon-smiley12 dt-icon"></i> Free<br></span>
+                                            <div class="dt-amt" ng-show="trend.fee == 1" ></div>
+                                        </div>
+                                        <div class="dt-ln"></div>
+                                        <div class="dt-info">
+                                            <p class="dt-txt">{{trend.info}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div ng-show="!schTrend.length" class="t-box">
+                        <div class="dt-bg no-rst">
+
+                            <div class="sml-head">
+                                <div class="face face__standard">
+                                    <div class="eye-left"></div>
+                                    <div class="eye-right"></div>
+                                    <div class="mouth"></div>
+                                </div>
+                            </div>
+
+
+                            No Match Found!</div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+            $('.menu .item')
+            .tab()
+            ;
+</script>
